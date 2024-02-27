@@ -3,12 +3,7 @@ import 'dotenv/config'
 
 const app = express();
 
-const port = process.env.PORT || 3000
+app.use(express.json())
 
-app.get('/', (req, res) => {
-    console.log(process.env.TESTE)
-})
+export default app
 
-app.listen(port, () => {
-    console.log("server running in http://localhost:3000")
-})
