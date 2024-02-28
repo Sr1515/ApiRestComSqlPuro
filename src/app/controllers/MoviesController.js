@@ -15,7 +15,6 @@ class MoviesController {
 
     async store(req, res) {
         const movie = req.body
-        console.log(movie)
         const row = await MoviesRepository.create(movie)
         res.json(row)
     }
@@ -27,7 +26,11 @@ class MoviesController {
         res.json(row)
     }
 
-    delete() {}
+    async delete(req, res) {
+        const id = req.params.id
+        const row = await MoviesRepository.delete(id)
+        res.json(row)
+    }
 
 }
 

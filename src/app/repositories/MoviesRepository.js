@@ -5,7 +5,7 @@ class MoviesRepository {
         const sql = 'INSERT INTO movies (nome, genero, resumo) values ($1, $2, $3)'
         return consulta(sql, [movie.nome, movie.genero, movie.resumo], "Não foi possivel cadastrar")
     }
-
+        
     findAll() {
         const sql = 'SELECT * FROM movies'
         return consulta(sql, '', "Não foi possivel encontrar")
@@ -21,7 +21,9 @@ class MoviesRepository {
         return consulta(sql, [movie.nome, movie.genero, movie.resumo, id], "Não foi possivel atualizar")
     }
 
-    delete() {
+    delete(id) {
+        const sql = 'DELETE FROM movies WHERE id = $1'
+        return consulta(sql, [id], "Não foi possivel deletar")
     }
 }
 
