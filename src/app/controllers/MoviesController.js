@@ -8,11 +8,18 @@ class MoviesController {
     }
 
     async show(req, res) {
-        const movieId = req.params.id
-        const row = await MoviesRepository.findById(movieId)
+        const id = req.params.id
+        const row = await MoviesRepository.findById(id)
         res.json(row.rows)
     }
-    store() {}
+
+    async store(req, res) {
+        const movie = req.body
+        console.log(movie)
+        const row = await MoviesRepository.create(movie)
+        res.json(row)
+    }
+
     update() {}
     delete() {}
 

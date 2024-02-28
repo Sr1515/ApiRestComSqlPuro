@@ -2,7 +2,8 @@ import { consulta } from "../database/connection.js";
 
 class MoviesRepository {
     create(movie) {
-
+        const sql = 'INSERT INTO movies (nome, genero, resumo) values ($1, $2, $3)'
+        return consulta(sql, [movie.nome, movie.genero, movie.resumo], "Não foi possivel cadastrar")
     }
 
     findAll() {
