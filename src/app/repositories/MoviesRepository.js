@@ -16,7 +16,9 @@ class MoviesRepository {
         return consulta(sql, [id], "Não foi possivel encontrar o filme")
     }
 
-    update() {
+    update(id, movie) {
+        const sql = 'UPDATE movies SET nome = $1, genero = $2, resumo = $3 WHERE id = $4'
+        return consulta(sql, [movie.nome, movie.genero, movie.resumo, id], "Não foi possivel atualizar")
     }
 
     delete() {

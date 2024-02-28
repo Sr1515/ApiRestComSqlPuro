@@ -20,7 +20,13 @@ class MoviesController {
         res.json(row)
     }
 
-    update() {}
+    async update(req, res) {
+        const id = req.params.id 
+        const movie = req.body
+        const row = await MoviesRepository.update(id, movie)
+        res.json(row)
+    }
+
     delete() {}
 
 }
